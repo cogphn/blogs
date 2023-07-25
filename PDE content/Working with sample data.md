@@ -135,7 +135,7 @@ Now at this point you *could* potentially jump into a threat hunting process,(i.
 
 
 
-## Logstashh
+## Logstash
 
 When handling data at any level, you will inevitably run into the problem of needing the data to be modified from one format to another, or moved from one tool to another. In our current scenario, we need to get this Mordor dataset, in the form of line-delimited JSON data, into our main data store, elasticsearch. Logstash is Elastic’s tool for addressing problems like this. In this section, we will develop a simple logstash configuration file, which will contain the details about where the source data is, its current format, the destination, and how to transform the data before it gets sent to its destination. 
 
