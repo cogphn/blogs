@@ -69,7 +69,11 @@ Broadly speaking, we can approach any data analysis task in three steps.
 
 #### 1. Understand the data and the objectives
 A less technical step. Before diving all the way in, talk to the owners of the data or domain experts, read available documentation and try to get as close as possible to understanding the chunk of data you're attepting to analyze. In our case, we know that we are looking at Windows event log data, captured during a controlled replay of an APT29 intrusion.  
-We also need to clarify the objectives of the analysis, normally 
+We also need to clarify the objectives of the analysis. This just means working out which specific questions we want to answer. For example:
+ - what happened?
+ - how many endpoints were impacted?
+ - what TTPs were used?
+ - which static indicators have investigative value?
 
 #### 2. Explore the data
 
