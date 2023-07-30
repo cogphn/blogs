@@ -133,16 +133,10 @@ At a glance, we can see the most events were recorded in the Sysmon logs. Intere
 
 #### 3. Find threads to pull
 
-Now at this point you *could* potentially jump into a threat hunting process,(i.e establish a hypothesis, and begin analysis around that hypothesis) but when you're working with a sample dataset, chances are you already have an idea of what you are looking for - a fuzzy picture of what happened, and now really just need to develop the resolution of that picture. For security data you want to be able to do three things really well:
+Now at this point you *could* potentially jump into a threat hunting process,(i.e establish a hypothesis, and begin analysis around that hypothesis) but when you're working with a sample dataset, chances are you already have an idea of what you are looking for - a fuzzy picture of what happened, and now really just need to develop the resolution of that picture. For the specific problem of finding potential evil in security data you want your data tools to enable the following:
  - Search the data for keywords, and pivot on significant keywords 
  - Understand the prevelance of specific attributes
  - View a sequence of events between a given timeframe 
-
-
-
-
-
-
 
 
 ## Logstash
