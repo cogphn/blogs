@@ -51,7 +51,7 @@ If you take a look at the first record (right-click the first record in the data
 
 ![single record in Zui](./wwsd/screenshot2.png)
 
-There is a handy time bar chart that you can configure. First click the three dots in the spot shown below. 
+There is a handy configurable bar chart that you can configure. First click the three dots in the spot shown below. 
 
 ![configuring the ](./wwsd/screenshot2_1.png)
 
@@ -59,9 +59,7 @@ Leave the "Time Field" value as default, but enter the value "Hostname" for "Col
 
 ![single record in Zui](./wwsd/screenshot2_2.png)
 
-
 Now you'll see a neato stacked histogram that shows you the number of events per change in Hostname over time. 
-
 
 ![single record in Zui](./wwsd/screenshot2_3.png)
 
@@ -70,7 +68,7 @@ Now you'll see a neato stacked histogram that shows you the number of events per
 Broadly speaking, we can approach any data analysis task in three steps.
 
 #### 1. Understand the data 
-A less technical step. Before diving all the way in, talk to domain experts, read available documentation and try to get as close as possible to understanding the chunk of data you're attepting to analyze. In our case, we know that we are looking at Windows event log data, captured during a controlled replay of an APT29 intrusion.  
+A less technical step. Before diving all the way in, talk to the owners of the data or domain experts, read available documentation and try to get as close as possible to understanding the chunk of data you're attepting to analyze. In our case, we know that we are looking at Windows event log data, captured during a controlled replay of an APT29 intrusion.  
 
 #### 2. Explore the data
 
@@ -102,13 +100,13 @@ You should see a simple table showing us the first event in the dataset, the las
 
 Here we simply used three aggregate functions to perform the following:
 
- - min(ts) <- find the smallest value in the 'ts' field. This will return the earliest occuring event.
- - max(ts) <- find the largest value in the 'ts' field. This will return the last event in the dataset.
- - count() <- count the number of observations in the dataset.
+ - min(ts) : find the smallest value in the 'ts' field. This will return the earliest occuring event.
+ - max(ts) : find the largest value in the 'ts' field. This will return the last event in the dataset.
+ - count() : count the number of observations in the dataset.
 
 No we know the Mordor dataset contains 196,081 events, covering a period of just over 32 minutes.
 
-Let's go a step further and see what kind of events are in the dataset. In zui, enter the following query:
+Let's go a step further and see what kind of events are in the dataset. In Zui, enter the following query:
 
 ~~~
 min(ts), max(ts), count() by Channel | sort min
@@ -131,9 +129,6 @@ min(ts), max(ts), count() by Channel | sort min
 
 
 At a glance, we can see the most events were recorded in the Sysmon logs. Interestingly, there is only a single event for the channel 'Microsoft-Windows-Bits-Client/Operational'. This makes the event significant within this dataset, but it's not guranteed to hold investigative value.
-
-
-
 
 
 #### 3. Find threads to pull
