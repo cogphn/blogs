@@ -26,6 +26,7 @@ First, we will launch the Zed interface, Zui. This will start a Zed server in th
 
 Note: The commands below were run on a Windows system. If you are using a linux or macOS system, the following commands will work in the same way. The one exception is that the zed and zq executables will be invoked slightly differently. For example instead of running c:\programs\zed.exe, you might have to issue the command ~/programs/zed (presuming the zed executable is stored in the ~/programs directory).
 
+Ensure the Zui interface is running, then run the following commands:
 ~~~cmd
 > zed.exe create apt29_sampledata
 pool created: apt29_sampledata 2Q6FvaBs1aSkhlsDxUSy8yKhWZj
@@ -42,13 +43,27 @@ Finally, we will load the data into Zed using the zq and zed commands
 2Q6Gq6BivwxHyDH19eA6weEidma committed
 ~~~
 
-Now when we look at Zui, we should see “apt29_sampledata” listed under Pools, and our data will be shown in the main query window.
+Now when we look at Zui, we should see “apt29_sampledata” listed under Pools. Clicking the "Query Pool" button , opens a new Query Session. 
 
 ![main interface](./wwsd/screenshot1.png)
 
 If you take a look at the first record (right-click the first record in the data, then select “Show in Detail Pane”, you’ll notice it bears a resemblance to the Windows event log data we’ve been looking at throughout the book - specifically in terms of the available attributes.
 
 ![single record in Zui](./wwsd/screenshot2.png)
+
+There is a handy time bar chart that you can configure. First click the three dots in the spot shown below. 
+
+![configuring the ](./wwsd/screenshot2_1.png)
+
+Leave the "Time Field" value as default, but enter the value "Hostname" for "Color Field", then hit Save.
+
+![single record in Zui](./wwsd/screenshot2_2.png)
+
+
+Now you'll see a neato stacked histogram that shows you the number of events per change in Hostname over time. 
+
+
+![single record in Zui](./wwsd/screenshot2_3.png)
 
 ### General approach for data analysis
 
