@@ -12,7 +12,7 @@ One useful skill detection engineers should develop is analyzing sample data. Wh
 
 ## Sample data 
 
-Multiple projects exist with the objective of making sample data available for security professionals, to help them to better understand the telemetry produced when different procedures are executed. An example of such a project is the Open Threat Research Forge’s Security-Datasets repository (found here: https://github.com/OTRF/Security-Datasets). 
+Multiple projects exist with the objective of making sample data available for security professionals, to help them to better understand the telemetry produced when different procedures are executed. An example of such a project is the Open Threat Research Forge’s Security-Datasets repository (found here: [https://github.com/OTRF/Security-Datasets](https://github.com/OTRF/Security-Datasets) ). 
 The repo has some interesting data, including datasets from a reproduction of an APT29 operation. If you navigate to the datasets/compound/apt29/README.md, you will find information about the dataset and summary statistics about the types of events generated as part of the simulated operation. The file apt29_evals_day1_manual.zip contains the sample data we’re interested in. If you extract this zip file, you’ll notice it contains a json file, about 376 MB in size. The file is a simple newline-delimited json file, which can be explored with any of your favorite tools, such as jq, zed etc.
 
 ## Walkthrough: Analyzing APT 29 sample data with Zed
@@ -67,8 +67,9 @@ Now you'll see a neato stacked histogram that shows you the number of events per
 
 Broadly speaking, we can approach any data analysis task in three steps.
 
-#### 1. Understand the data 
+#### 1. Understand the data and the objectives
 A less technical step. Before diving all the way in, talk to the owners of the data or domain experts, read available documentation and try to get as close as possible to understanding the chunk of data you're attepting to analyze. In our case, we know that we are looking at Windows event log data, captured during a controlled replay of an APT29 intrusion.  
+We also need to clarify the objectives of the analysis, normally 
 
 #### 2. Explore the data
 
@@ -91,7 +92,6 @@ min(ts), max(ts), count()
 ~~~
 
 You should see a simple table showing us the first event in the dataset, the last event in the dataset, and the total number of events (or observations).
-
 
 | min | max | count |
 | :--- | :--- | :--- | 
