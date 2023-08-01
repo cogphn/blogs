@@ -76,6 +76,8 @@ We also need to clarify the objectives of the analysis. This just means working 
  - which static indicators have investigative value?
  - how can we build detections to identify these events if they occur in the future? 
 
+Having these objectives defined at the beginning of the analysis helps you appreciate the limitations of the data after the analysis is complete. Knowing what gaps exist in the data you are looking will help when designing compensating controls or building solutions to close those gaps.
+
 #### 2. Explore the data
 
 In this step we want to answer questions about the data itself.
@@ -136,12 +138,29 @@ min(ts), max(ts), count() by Channel | sort min
 At a glance, we can see the most events were recorded in the Sysmon logs. Interestingly, there is only a single event for the channel 'Microsoft-Windows-Bits-Client/Operational'. This makes the event significant within this dataset, but it's not guranteed to hold investigative value.
 
 
+Finally, let's just look at some actual data to see what it looks like. We know it's json, but we'll take a quick peek to get familiar with the attributes in some of the documents. Execute the following command:
+
+~~~
+head 10
+~~~
+
+now click on "INSPECTOR" above the histogram. If you expand the first result (by clicking '>' next to the first result). You will see a screen similar to the following:
+
+
+![single record in Zui](./wwsd/screenshot2_4.png)
+
+This view makes it easy to view a small number of documents, and gives us a high-level understanding of the data within.
+
+
+
 #### 3. Find threads to pull
 
 Now at this point you *could* potentially jump into a threat hunting process,(i.e establish a hypothesis, and begin analysis around that hypothesis) but when you're working with a sample dataset, chances are you already have an idea of what you are looking for - a fuzzy picture of what happened, and now really just need to develop the resolution of that picture. For the specific problem of finding potential evil in security data you want your data tools to enable the following:
  - Search the data for keywords, and pivot on significant keywords 
  - Understand the prevelance of specific attributes
  - View a sequence of events between a given timeframe 
+
+
 
 
 ## Logstash
