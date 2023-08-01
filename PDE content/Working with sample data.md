@@ -156,9 +156,9 @@ This view makes it easy to view a small number of documents, and gives us a high
 #### 3. Find threads to pull
 
 Now at this point you *could* potentially jump into a threat hunting process,(i.e establish a hypothesis, and begin analysis around that hypothesis) but when you're working with a sample dataset, chances are you already have an idea of what you are looking for - a fuzzy picture of what happened, and now really just need to develop the resolution of that picture. For the specific problem of finding potential evil in security data you want your data tools to enable the following:
- - Search the data for keywords, and pivot on significant keywords 
- - Understand the prevelance of specific attributes
- - View a sequence of events between a given timeframe 
+ - Search the data for keywords, and pivot on significant keywords. Think of using a tool like SQL - you can interact with the data and have a high degree of control when running queries, but you can't do a blanket search of all columns for a string value...or at least not easily. This is why tools like splunk and elasticsearch are popular with security analysts. They want to search for a keyword regardless of which attribute contains the keyword.
+ - Understand the prevelance of specific attributes. For example if we see a specific application error recorded in logs around the same time a malicious event occurs - it could have been a result of the malicious event... or completely normal. Simple summary statistics can help clarify these events.
+ - View a sequence of events between a given timeframe. The requirements here are simply that your data platform of choice can understand datetime values, and can let you view events sequentially, between specified times.
 
 
 
