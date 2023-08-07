@@ -20,7 +20,7 @@ The repo has some interesting data, including datasets from a reproduction of an
 Here is an example of how we can look at this data using Zed (https://zed.brimdata.io/). The Zed project contains a set of extremely valuable tools for working with data in multiple formats. 
 When it comes to enabling the rapid exploration of json data, I'm yet to find a tool that is easier to use than Zed/ Zui. For that reason, we'll use it for looking at some sample data, provided in json format.  
 
-For the next section, we will need the Zed command line utility, available for all major operating systems here: [https://github.com/brimdata/zed/](https://github.com/brimdata/zed/)releases/, and the user interface, Zui, available here: [https://github.com/brimdata/zui/releases](https://github.com/brimdata/zui/releases).
+For the next section, we will need the Zed command line utility, available for all major operating systems here: [https://github.com/brimdata/zed/](https://github.com/brimdata/zed/), and the user interface, Zui, available here: [https://github.com/brimdata/zui/releases](https://github.com/brimdata/zui/releases).
 
 First, we will launch the Zed interface, Zui. This will start a Zed server in the background, that we’ll use to load our data. We don’t have to be too concerned with the inner workings of Zed/ Zui at this point, but we will be executing a couple commands to get the data into an explorer-friendly format.
 
@@ -45,7 +45,7 @@ Finally, we will load the data into Zed using the zq and zed commands
 
 Now when we look at Zui, we should see “apt29_sampledata” listed under Pools. Clicking the "Query Pool" button , opens a new Query Session. 
 
-![main interface](./wwsd/screenshot1.png)
+![<img src="./wwsd/screenshot1.png" width="50%" />](./wwsd/screenshot1.png)
 
 If you take a look at the first record (right-click the first record in the data, then select “Show in Detail Pane”, you’ll notice it bears a resemblance to the Windows event log data we’ve been looking at throughout the book - specifically in terms of the available attributes.
 
