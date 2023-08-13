@@ -421,3 +421,8 @@ After installing Wireshark and using it to open a pcap file, you will be present
 ![screenshot of wireshark with pikabot sample loaded](./wwsd/screenshot7.png)
 
 
+Each row in the main window represents a network packet that was transmitted or received by the packet capturing node. One of the fastest ways to get acquainted with a dataset is from the statistics menu. Clicking on Statistics -> IPv4 statistics -> All Addresses gives you an understanding of the IPv4 hosts in the packet capture, and how frequently they appear in the dataset. This is useful for quickly spotting anomalies. Filtering the data for a specific protocol is as simple as entering the protocol into the display filter and hitting enter.
+
+
+![wireshark screenshot 2](./wwsd/screenshot8.png)
+
