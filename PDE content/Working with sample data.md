@@ -217,7 +217,7 @@ Scroll through the data and see if you notice anything suspicious (it won't take
 }
 ~~~
 
-Here we have a .scr file initiating the Windows command prompt (cmd.exe), which is unusual. See if you can find more information about this scr file on the internet.
+Here we have a .scr file initiating the Windows command prompt (cmd.exe), which is unusual. See if you can find more information about this scr file on the internet. As you review events in the dataset, you should attempt to classify them by MITRE ATT&CK technique. This classification will help when developing detections.
 
 
 ## Logstash
