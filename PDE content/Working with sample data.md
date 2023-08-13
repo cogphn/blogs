@@ -2,7 +2,9 @@
 
 # Chapter _
 
-Working with sample data
+(Part 1)
+
+# Working with sample data
 
 ## Introduction
 
@@ -137,6 +139,38 @@ min(ts), max(ts), count() by Channel | sort min
 
 At a glance, we can see the most events were recorded in the Sysmon logs. Interestingly, there is only a single event for the channel 'Microsoft-Windows-Bits-Client/Operational'. This makes the event significant within this dataset, but it's not guranteed to hold investigative value.
 
+We can take a close look at the types of sysmon events within the dataset. Execute the following query against the dataset:
+
+~~~
+msg:=split(Message,":")[0]
+| SourceName=="Microsoft-Windows-Sysmon"
+| count(), min(ts), max(ts) by msg 
+| sort min
+~~~
+
+In this query, we create use the split function to create a new convenience column named 'msg' for our analysis. We then filter the dataset to only return events where the source is "Microsoft-Windows-Sysmon", and use aggregation functions to get the number of events, earliest event and last event for each value of 'msg'.
+
+| msg | count | min | max
+| :--- | :--- | :--- | :--- |
+Process accessed | 39283 | 2020-05-01T22:55:23Z | 2020-05-01T23:28:17Z
+Network connection detected |1229|2020-05-01T22:55:26Z|2020-05-01T23:27:55Z
+File created | 1649 | 2020-05-01T22:55:28Z | 2020-05-01T23:28:11Z
+Process terminated | 401 | 2020-05-01T22:55:28Z|2020-05-01T23:28:09Z
+Registry value set | 17541| 2020-05-01T22:55:29Z | 2020-05-01T23:28:17Z
+Registry object added or deleted | 61151 | 2020-05-01T22:55:30Z | 2020-05-01T23:28:00Z
+Image loaded | 20259 | 2020-05-01T22:55:32Z | 2020-05-01T23:28:12Z
+Pipe Connected | 362 | 2020-05-01T22:55:46Z | 2020-05-01T23:26:49Z
+Process Create | 447 | 2020-05-01T22:55:56Z | 2020-05-01T23:26:11Z
+Dns query | 81 | 2020-05-01T22:56:01Z | 2020-05-01T23:26:15Z
+Pipe Created | 84 | 2020-05-01T22:56:04Z | 2020-05-01T23:21:29Z
+File Delete | 422 | 2020-05-01T22:56:15Z | 2020-05-01T23:27:11Z
+RawAccessRead detected | 652 | 2020-05-01T22:56:47Z | 2020-05-01T23:26:48Z
+File creation time changed | 209 | 2020-05-01T22:58:44Z | 2020-05-01T23:27:11Z
+CreateRemoteThread detected | 95 | 2020-05-01T23:05:16Z | 2020-05-01T23:20:44Z
+File stream created | 18 | 2020-05-01T23:18:35Z | 2020-05-01T23:19:44Z
+Sysmon service state changed | 1 | 2020-05-01T23:19:18Z | 2020-05-01T23:19:18Z
+
+While this data doesn't get us closer to understanding exactly what happened, it does give us a better high-level understanding of the events contained in the dataset. 
 
 Finally, let's just look at some actual data to see what it looks like. We know it's json, but we'll take a quick peek to get familiar with the attributes in some of the documents. Execute the following command:
 
@@ -171,7 +205,19 @@ EventID==1
 | fuse
 ~~~
 
-Scroll through the data and see if you notice anything suspicious (it won't take long).
+Scroll through the data and see if you notice anything suspicious (it won't take long). The second event in the resultset looks like this:
+
+~~~json
+{
+ ts: 2020-05-01T22:56:04Z, 
+ Hostname: "SCRANTON.dmevals.local", 
+ ParentCommandLine: ""C:\ProgramData\victim\â€®cod.3aka3.scr" /S", 
+ CommandLine: ""C:\windows\system32\cmd.exe"", 
+ User: "DMEVALS\pbeesly"
+}
+~~~
+
+Here we have a .scr file initiating the Windows command prompt (cmd.exe), which is unusual. See if you can find more information about this scr file on the internet.
 
 
 ## Logstash
@@ -312,4 +358,6 @@ Keep in mind, as we saw earlier, the data was recorded back in 2020, so we need 
 
 ![mordor data in elastic](./wwsd/screenshot5.png)
 
+
+And there your data is! Ready for analysis.
 
