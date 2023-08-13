@@ -426,3 +426,10 @@ Each row in the main window represents a network packet that was transmitted or 
 
 ![wireshark screenshot 2](./wwsd/screenshot8.png)
 
+
+If there is a specific packet that looks interesting, you can view the full conversation by right-clicking the packet, select “Follow", then “HTTP stream” (for HTTP traffic).
+
+For the first packet shown when the “http” filter is applied, you will notice something strange about this conversation. Specifically while the ‘Content-Type’ is “image/gif”, the bytes start with “MZ”, then eventually we see the text “This program cannot be run in DOS mode.”. These features indicate that the file returned was an executable, masquerading as an innocent-looking gif file.
+
+![wireshark screenshot 3](./wwsd/screenshot9.png)
+
