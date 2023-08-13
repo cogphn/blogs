@@ -361,3 +361,63 @@ Keep in mind, as we saw earlier, the data was recorded back in 2020, so we need 
 
 And there your data is! Ready for analysis.
 
+
+## EVTX-ATTACK-SAMPLES
+
+Another rich source of sample data is Samir Boussean’s EVTX-ATTACK-SAMPLES repository on GitHub. This repo contains sample Windows event log files for multiple attack replays, organized by MITRE tactic. 
+
+Since we can’t directly move Windows event log files into Elasticsearch, we have to take a multi-step approach to ingesting these for exploration. We know that we can move json data into Elastic using Logstash, and luckily, there is an excellent solution for turning Event log files into json over on omerbenamram’s GitHub repository. This Rust-based EVTX parser is located here: https://github.com/omerbenamram/evtx.
+
+To get started, download the appropriate evtx_dump release for your operating system, and converting our evtx file to line-delimited json is as simple as issuing the following command:
+
+~~~
+evtx_dump.exe DE_Powershell_CLM_Disabled_Sysmon_12.evtx -o jsonl >events_converted.ndjson
+~~~
+
+This will output a json file, which we can then move into Elastic. Here is a simple Logstash pipeline configuration to get this data ingested.
+
+~~~json
+input {
+        file {
+                path => "C:/progs/data/samples/evtx_dump/*"
+                start_position => beginning
+                codec => "json"
+        }
+}
+output {
+        elasticsearch {
+        hosts => ["10.30.23.160:9200"]
+        user => "elastic"
+        password => "<<your password>>"
+        ssl => true
+        ssl_certificate_verification => false
+        data_stream => true
+        data_stream_type => "logs"
+        data_stream_dataset => "event-log-sample"
+        data_stream_namespace => "sampledata"
+        }
+}
+~~~
+
+
+## Sample Packet Capture (PCAP) data
+
+Sample network data also exists in abundance. One excellent resource is malware-traffic-analysis.net (https://malware-traffic-analysis.net/)
+
+The technical blog posts are focused on documenting the network traffic related to different malware samples. These posts come with a technical writeup, full packet captures and samples of the malware in focus.
+
+![screenshot of malware-traffic-analysis](./wwsd/screenshot6.png)
+
+Getting acquainted with what malicious network traffic can look like is as simple as downloading the pcap files attached to the technical write up.
+The quintessential tool for looking at packet capture data is Wireshark (available here: https://www.wireshark.org/). 
+
+For this next section, we will review the pcap file located here: https://malware-traffic-analysis.net/2023/05/17/index.html. 
+
+IMPORTANT
+This packet capture recorded the download of malware, specifically a Pikabot sample. If using a Windows workstation, you will likely need to work with this file from a directory that was excluded from Windows defender scanning. This is obviously dangerous so please be careful when interacting with this file. Specifically, avoid exporting any objects. If you are viewing this packet capture on macOS or Linux, the risk is significantly lower.
+
+After installing Wireshark and using it to open a pcap file, you will be presented with a screen similar to the following
+
+![screenshot of wireshark with pikabot sample loaded](./wwsd/screenshot7.png)
+
+
