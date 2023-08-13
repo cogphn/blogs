@@ -406,7 +406,7 @@ Sample network data also exists in abundance. One excellent resource is malware-
 
 The technical blog posts are focused on documenting the network traffic related to different malware samples. These posts come with a technical writeup, full packet captures and samples of the malware in focus.
 
-![screenshot of malware-traffic-analysis](./wwsd/screenshot6.png)
+![screenshot of malware-traffic-analysis](./wwsd/Screenshot6.png)
 
 Getting acquainted with what malicious network traffic can look like is as simple as downloading the pcap files attached to the technical write up.
 The quintessential tool for looking at packet capture data is Wireshark (available here: https://www.wireshark.org/). 
