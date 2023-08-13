@@ -413,7 +413,7 @@ The quintessential tool for looking at packet capture data is Wireshark (availab
 
 For this next section, we will review the pcap file located here: https://malware-traffic-analysis.net/2023/05/17/index.html. 
 
-IMPORTANT
+#### IMPORTANT
 This packet capture recorded the download of malware, specifically a Pikabot sample. If using a Windows workstation, you will likely need to work with this file from a directory that was excluded from Windows defender scanning. This is obviously dangerous so please be careful when interacting with this file. Specifically, avoid exporting any objects. If you are viewing this packet capture on macOS or Linux, the risk is significantly lower.
 
 After installing Wireshark and using it to open a pcap file, you will be presented with a screen similar to the following
