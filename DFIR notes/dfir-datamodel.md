@@ -34,3 +34,9 @@ For analysts, this data is makes more sense when ordered sequentially, by timest
 
 The Velociraptor project has a handy artifact reference that shows details for numerous artifacts [Artifact Refence :: Velociraptor - Digging Deeper!](https://docs.velociraptor.app/artifact_references/)
 
+
+
+## A common schema
+
+We ideally want a common schema that we can fit all forensic data into, specifically to make analysis easier. 
+Plaso / log2timeline has something like this.
